@@ -25,7 +25,8 @@ public class UserController {
 
     @GetMapping("/user")
     public ResponseEntity<UserDTO> getEmail(Principal principal) throws JsonProcessingException {
-        User user = userInfoService.getUser(principal);
-        return new ResponseEntity<>(conversor.toD(user), HttpStatus.OK);
+        UserDTO userDTO = conversor.toD(userInfoService.getUser(principal));
+        userDTO.setId(null);
+        return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
 }
