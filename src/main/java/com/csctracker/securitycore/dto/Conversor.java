@@ -5,24 +5,18 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Conversor<E, D> {
     private final ObjectMapper objectMapper;
-    private final Gson gson;
-
     private final Class<E> eClass;
     private final Class<D> dClass;
 
     public Conversor(Class<E> eClass, Class<D> dClass) {
         this.eClass = eClass;
         this.dClass = dClass;
-        gson = new GsonBuilder().create();
         objectMapper = new ObjectMapper()
                 .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
@@ -46,8 +40,8 @@ public class Conversor<E, D> {
         return objectMapper.convertValue(e, dClass);
     }
 
-    public List<D> toDList(String d) {
-        return gson.fromJson(d, TypeToken.getParameterized(List.class, dClass).getType());
+    public List<D> toDList(String d) throws JsonProcessingException {
+        return objectMapper.readValue(d, objectMapper.getTypeFactory().constructCollectionType(List.class, dClass));
     }
 
     public D toD(String d) throws JsonProcessingException {
@@ -60,9 +54,5 @@ public class Conversor<E, D> {
 
     public ObjectMapper getObjectMapper() {
         return objectMapper;
-    }
-
-    public Gson getGson() {
-        return gson;
     }
 }
