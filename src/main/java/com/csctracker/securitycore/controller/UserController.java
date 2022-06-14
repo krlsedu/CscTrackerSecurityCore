@@ -1,8 +1,8 @@
 package com.csctracker.securitycore.controller;
 
-import com.csctracker.securitycore.dto.Conversor;
-import com.csctracker.securitycore.dto.UserDTO;
-import com.csctracker.securitycore.model.User;
+import com.csctracker.dto.Conversor;
+import com.csctracker.dto.UserDTO;
+import com.csctracker.model.User;
 import com.csctracker.securitycore.service.UserInfoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;

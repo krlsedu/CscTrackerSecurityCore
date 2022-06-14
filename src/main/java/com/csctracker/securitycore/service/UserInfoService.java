@@ -1,9 +1,9 @@
 package com.csctracker.securitycore.service;
 
 
+import com.csctracker.model.User;
+import com.csctracker.repository.UserRepository;
 import com.csctracker.securitycore.configs.UnAuthorized;
-import com.csctracker.securitycore.model.User;
-import com.csctracker.securitycore.repository.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;

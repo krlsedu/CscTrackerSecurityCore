@@ -1,9 +1,9 @@
 package com.csctracker.securitycore.service;
 
-import com.csctracker.securitycore.dto.Conversor;
-import com.csctracker.securitycore.dto.TokenDTO;
-import com.csctracker.securitycore.dto.UserDTO;
-import com.csctracker.securitycore.model.User;
+import com.csctracker.dto.Conversor;
+import com.csctracker.dto.TokenDTO;
+import com.csctracker.dto.UserDTO;
+import com.csctracker.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
