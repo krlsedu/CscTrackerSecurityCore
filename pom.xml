@@ -6,7 +6,7 @@
     <artifactId>SecurityCore</artifactId>
     <name>SecurityCore</name>
     <description>SecurityCore</description>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
     <packaging>jar</packaging>
 
     <properties>
