@@ -43,9 +43,7 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
 	}
 	
 	public RemoteTokenServices remoteTokenServices(String ipAuth, String portAuth) throws InvalidTokenException {
-		
 		return new CustomRemoteToken("OAUTH", "OAUTH", "http://" + ipAuth + ":" + portAuth + "/oauth/check_token");
-		
 	}
 	
 	@Bean
