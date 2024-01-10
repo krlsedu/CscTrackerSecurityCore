@@ -38,6 +38,7 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
 				.antMatchers(HttpMethod.OPTIONS).permitAll()
 				.antMatchers("/actuator/**").permitAll()
 				.antMatchers("/favicon.*").permitAll()
+				.antMatchers("/swagger-ui/**", "/**/swagger-ui/**").permitAll()
 				.anyRequest().authenticated()
 				.and().exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 	}
