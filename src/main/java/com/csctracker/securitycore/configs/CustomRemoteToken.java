@@ -1,5 +1,6 @@
 package com.csctracker.securitycore.configs;
 
+import com.csctracker.service.RequestInfo;
 import org.slf4j.MDC;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpEntity;
@@ -112,7 +113,9 @@ public class CustomRemoteToken extends RemoteTokenServices {
         }
         headers.setAccept(Collections.singletonList(MediaType.parseMediaType(MediaType.APPLICATION_JSON_VALUE)));
 
-        headers.add(CORRELATION_ID_HEADER_NAME, MDC.get(CORRELATION_ID_HEADER_NAME));
+        if (RequestInfo.getHeaders().containsKey(CORRELATION_ID_HEADER_NAME)) {
+            headers.add(CORRELATION_ID_HEADER_NAME, RequestInfo.getHeaders().get(CORRELATION_ID_HEADER_NAME));
+        }
 
         return restTemplate.exchange(path, HttpMethod.POST, new HttpEntity<>(formData, headers), Map.class).getBody();
     }
