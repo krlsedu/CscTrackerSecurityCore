@@ -113,8 +113,12 @@ public class CustomRemoteToken extends RemoteTokenServices {
         }
         headers.setAccept(Collections.singletonList(MediaType.parseMediaType(MediaType.APPLICATION_JSON_VALUE)));
 
-        if (RequestInfo.getHeaders().containsKey(CORRELATION_ID_HEADER_NAME)) {
-            headers.add(CORRELATION_ID_HEADER_NAME, RequestInfo.getHeaders().get(CORRELATION_ID_HEADER_NAME));
+        try {
+            if (RequestInfo.getHeaders().containsKey(CORRELATION_ID_HEADER_NAME)) {
+                headers.add(CORRELATION_ID_HEADER_NAME, RequestInfo.getHeaders().get(CORRELATION_ID_HEADER_NAME));
+            }
+        } catch (Exception e) {
+            // ignore
         }
 
         return restTemplate.exchange(path, HttpMethod.POST, new HttpEntity<>(formData, headers), Map.class).getBody();
