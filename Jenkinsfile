@@ -2,7 +2,7 @@
 env.RELEASE_COMMIT = "1";
 env.VERSION_NAME = "";
 env.REPOSITORY_NAME = "CscTrackerSecurityCore"
-env.LIBRARY_NAME = "CscTrackerSecurityCore-dependency"
+env.LIBRARY_NAME = "SecurityCore-dependency"
 
 pipeline {
     agent none
